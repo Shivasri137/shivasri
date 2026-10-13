@@ -263,7 +263,7 @@ export default function Home() {
       <section className="hero-banner" id="home" aria-label="Shiva Sri portfolio introduction">
         <div className="hero-banner-image">
           <Image
-            src="/shiva-generated-hero.webp"
+            src="/shiva-header-banner.webp"
             alt="Professional portfolio hero image of Shiva Sri in a cream suit against a deep green modern workspace"
             width={1024}
             height={440}
@@ -344,7 +344,7 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-photo-card reveal">
             <div className="about-photo-frame">
-              <Image src="/shiva-real-portrait.webp" alt="Shiva Sri Jonnala in a cream professional suit" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
+              <Image src="/shiva-portrait.webp" alt="Shiva Sri Jonnala in a cream professional suit" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
               <div className="about-photo-overlay"><span>SHIVA SRI JONNALA</span><span>AI / ML ENGINEER</span></div>
             </div>
             <div className="about-photo-foot"><span><i /> BUILD · TEST · LEARN · REPEAT</span><span>IN / HYDERABAD</span></div>
