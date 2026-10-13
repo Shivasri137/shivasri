@@ -358,7 +358,7 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-photo-card reveal">
             <div className="about-photo-frame">
-              <Image src="/shiva-header-banner.webp" alt="Shiva Sri in a navy shirt and cream trousers in a professional portfolio banner" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
+              <Image src="/shiva-portrait.webp" alt="Shiva Sri smiling at a laptop in a cream and black striped sweater" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
               <div className="about-photo-overlay"><span>SHIVA SRI JONNALA</span><span>AI / ML ENGINEER</span></div>
             </div>
             <div className="about-photo-foot"><span><i /> BUILD · TEST · LEARN · REPEAT</span><span>IN / HYDERABAD</span></div>
