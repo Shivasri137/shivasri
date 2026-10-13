@@ -161,7 +161,7 @@ export default function Home() {
           <div className="visual-labels"><span>FIG. 01 — THE BUILDER</span><span>INDIA / IN</span></div>
           <div className="portrait-frame">
             <div className="portrait-halo" />
-            <Image src="/shiva-portrait.jpg" alt="Shiva Sri smiling at a laptop, wearing a cream and black striped sweater" fill priority sizes="(max-width: 800px) 90vw, 42vw" className="portrait-image" />
+            <Image src="/shiva-portrait.webp" alt="Shiva Sri smiling at a laptop, wearing a cream and black striped sweater" fill priority sizes="(max-width: 800px) 90vw, 42vw" className="portrait-image" />
             <div className="portrait-shade" />
             <div className="portrait-caption"><span>SHIVA SRI</span><span>AI / ML · ENGINEERING</span></div>
             <div className="portrait-index">SS—01</div>
