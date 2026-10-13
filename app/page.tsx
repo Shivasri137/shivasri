@@ -314,7 +314,27 @@ export default function Home() {
         </div>
         <div className="project-grid">
           {visibleProjects.map(project => (
-            <button key={project.id} className={'project-card project-' + project.id + ' reveal'} onClick={() => setSelected(project)}>
+            <button
+              key={project.id}
+              className={'project-card project-' + project.id + ' reveal'}
+              onClick={() => setSelected(project)}
+              onPointerMove={event => {
+                if (event.pointerType === 'touch') return;
+                const rect = event.currentTarget.getBoundingClientRect();
+                const x = (event.clientX - rect.left) / rect.width;
+                const y = (event.clientY - rect.top) / rect.height;
+                event.currentTarget.style.setProperty('--tilt-x', ((x - 0.5) * 6).toFixed(2) + 'deg');
+                event.currentTarget.style.setProperty('--tilt-y', ((0.5 - y) * 5).toFixed(2) + 'deg');
+                event.currentTarget.style.setProperty('--glow-x', (x * 100).toFixed(1) + '%');
+                event.currentTarget.style.setProperty('--glow-y', (y * 100).toFixed(1) + '%');
+              }}
+              onPointerLeave={event => {
+                event.currentTarget.style.setProperty('--tilt-x', '0deg');
+                event.currentTarget.style.setProperty('--tilt-y', '0deg');
+                event.currentTarget.style.setProperty('--glow-x', '50%');
+                event.currentTarget.style.setProperty('--glow-y', '30%');
+              }}
+            >
               <div className="project-art">
                 <div className="art-grid" />
                 <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />
