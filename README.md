@@ -45,3 +45,17 @@ Review current project statuses and links. Add verified demos, screenshots, tech
 ## Stack
 
 Next.js, React, TypeScript, CSS, and Lucide icons. Animations are CSS-based. No external AI API is needed for portfolio functionality.
+
+## Contact form email delivery
+
+The contact form uses `POST /api/contact`. To deliver submissions through Resend, configure these environment variables in the deployment platform (for Vercel: Project → Settings → Environment Variables):
+
+- `RESEND_API_KEY` — required Resend API key.
+- `CONTACT_TO` — optional recipient address; defaults to `hello.shivasri@gmail.com`.
+- `CONTACT_FROM` — optional sender identity that has been verified in Resend; defaults to Resend's onboarding sender.
+
+Never commit API keys. If `RESEND_API_KEY` is not set, the form responds with a configuration status and the front end falls back to opening the visitor's email application.
+
+## Case-study visuals
+
+Project details include high-level architecture and workflow diagrams. These diagrams summarise the available project descriptions; they are not claims that each stage is already implemented exactly as drawn. Add actual screenshots and measured evaluation results when available.
