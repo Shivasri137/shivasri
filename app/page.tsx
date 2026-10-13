@@ -270,12 +270,6 @@ export default function Home() {
             priority
             sizes="100vw"
           />
-          <div className="hero-banner-copy">
-            <span className="banner-eyebrow"><i /> AI / ML ENGINEER</span>
-            <h1>Ideas into<br /><em>intelligent impact.</em></h1>
-            <p>PYTHON <b>·</b> GENAI <b>·</b> RAG <b>·</b> LLMS</p>
-            <span className="banner-open"><i /> OPEN TO OPPORTUNITIES</span>
-          </div>
         </div>
         <div className="banner-underbar">
           <div className="banner-underbar-copy">
@@ -364,7 +358,7 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-photo-card reveal">
             <div className="about-photo-frame">
-              <Image src="/shiva-portrait.webp" alt="Shiva Sri Jonnala in a cream professional suit" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
+              <Image src="/shiva-header-banner.webp" alt="Shiva Sri in a navy shirt and cream trousers in a professional portfolio banner" width={420} height={630} sizes="(max-width: 800px) 90vw, 34vw" />
               <div className="about-photo-overlay"><span>SHIVA SRI JONNALA</span><span>AI / ML ENGINEER</span></div>
             </div>
             <div className="about-photo-foot"><span><i /> BUILD · TEST · LEARN · REPEAT</span><span>IN / HYDERABAD</span></div>
@@ -378,10 +372,18 @@ export default function Home() {
               <div><span>INTELLECTUAL PROPERTY</span><strong>Published patent</strong><small>202541020161 A</small></div>
               <div><span>FOCUS AREAS</span><strong>LLMs · RAG · AI agents</strong><small>Computer vision · product engineering</small></div>
             </div>
-            <div className="linkedin-feature-card">
-              <div className="linkedin-feature-mark"><Linkedin size={22} /></div>
-              <div className="linkedin-feature-copy"><span>LINKEDIN / PROFESSIONAL PROFILE</span><strong>Projects, career updates & professional posts.</strong><p>Visit my profile to explore the content and featured items currently available there.</p></div>
-              <a href="https://www.linkedin.com/in/shivasrijonnala/" target="_blank" rel="noreferrer" aria-label="Open Shiva Sri's LinkedIn profile"><ArrowUpRight size={20} /></a>
+            <div className="linkedin-highlights">
+              <p className="section-overline"><span>LINKEDIN / SELECTED HIGHLIGHTS</span><span>OPEN PROFILE ↗</span></p>
+              <a className="linkedin-feature-card" href="https://www.linkedin.com/in/shivasrijonnala/" target="_blank" rel="noreferrer">
+                <div className="linkedin-feature-mark"><Linkedin size={22} /></div>
+                <div className="linkedin-feature-copy"><span>ARTICLE · AUG 2025</span><strong>Agentic AI: Unlocking the Power of Autonomous Intelligence</strong><p>A published article exploring agentic AI.</p></div>
+                <span className="linkedin-feature-arrow"><ArrowUpRight size={20} /></span>
+              </a>
+              <a className="linkedin-feature-card" href="https://www.linkedin.com/in/shivasrijonnala/" target="_blank" rel="noreferrer">
+                <div className="linkedin-feature-mark linkedin-project-mark"><BrainCircuit size={21} /></div>
+                <div className="linkedin-feature-copy"><span>PROJECT LISTING</span><strong>FlowBridge — Productivity Automation across Classroom and Career</strong><p>Multi-agent AI platform listed on my LinkedIn profile.</p></div>
+                <span className="linkedin-feature-arrow"><ArrowUpRight size={20} /></span>
+              </a>
             </div>
           </div>
         </div>
