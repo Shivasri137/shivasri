@@ -141,36 +141,27 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero section-pad" id="home">
-        <div className="hero-copy">
-          <div className="eyebrow"><span className="status-dot" /> BUILDING WITH INTENT <i /></div>
-          <p className="hero-kicker">AI / ML ENGINEERING · PRODUCT THINKING</p>
-          <h1>Ideas into<br /><span className="outline-type">impact<span className="lime">.</span></span></h1>
-          <p className="hero-description">I’m Shiva Sri — an AI/ML engineer and product-minded builder exploring the space between intelligent systems and useful human experiences.</p>
+      <section className="hero-banner" id="home" aria-label="Shiva Sri portfolio introduction">
+        <div className="hero-banner-image">
+          <Image
+            src="/shiva-header-banner.webp"
+            alt="Shiva Sri's AI/ML engineer banner featuring Python, GenAI, RAG and LLMs, with an open-to-opportunities message"
+            width={1600}
+            height={595}
+            priority
+            sizes="100vw"
+          />
+        </div>
+        <div className="banner-underbar">
+          <div className="banner-underbar-copy">
+            <p className="mini-overline">SHIVA SRI · AI / ML ENGINEER</p>
+            <p>Building intelligent systems and thoughtful digital experiences.</p>
+          </div>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#work">Explore my work <ArrowDownRight size={17} /></a>
-            <a className="text-action" href="#contact">Let’s talk <ArrowUpRight size={16} /></a>
-          </div>
-          <div className="hero-stats">
-            <div><span>EDUCATION</span><strong>B.Tech · AI & ML</strong></div>
-            <div><span>ACADEMICS</span><strong>9.05 / 10 GPA</strong></div>
-            <div><span>INTERESTS</span><strong>LLMs · Agents · Vision</strong></div>
+            <a className="btn btn-ghost" href="#contact">Let’s connect <ArrowUpRight size={16} /></a>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="visual-labels"><span>FIG. 01 — THE BUILDER</span><span>INDIA / IN</span></div>
-          <div className="portrait-frame">
-            <div className="portrait-halo" />
-            <Image src="/shiva-portrait.webp" alt="Shiva Sri smiling at a laptop, wearing a cream and black striped sweater" fill priority sizes="(max-width: 800px) 90vw, 42vw" className="portrait-image" />
-            <div className="portrait-shade" />
-            <div className="portrait-caption"><span>SHIVA SRI</span><span>AI / ML · ENGINEERING</span></div>
-            <div className="portrait-index">SS—01</div>
-          </div>
-          <div className="float-card float-top"><Sparkles size={14} /><span>Curiosity, engineered.</span></div>
-          <div className="float-card float-bottom"><span className="float-icon"><BrainCircuit size={19} /></span><span><b>Building with AI</b><small>From model to experience</small></span></div>
-          <p className="portrait-footnote">BUILD · TEST · LEARN · REPEAT</p>
-        </div>
-        <div className="hero-scroll"><span>SCROLL TO EXPLORE</span><div><i /></div><ArrowDown size={14} /></div>
       </section>
 
       <section className="ticker" aria-label="Areas of interest">
