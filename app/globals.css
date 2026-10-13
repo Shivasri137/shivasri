@@ -339,3 +339,106 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   .hero-banner-image img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;object-position:center}
   .hero-banner-image:after{background:linear-gradient(0deg,rgba(7,10,7,.05),transparent 35%)}
 }
+
+
+/* Banner v2 — use Shiva's supplied portrait in a bespoke, forest-green hero. */
+.hero-banner-image{position:relative;isolation:isolate;overflow:hidden;line-height:0;background:#0b2016}
+.hero-banner-image>img{display:block;position:relative;z-index:0;width:100%;height:auto;max-width:none;aspect-ratio:auto;object-fit:contain;object-position:center}
+.hero-banner-image:after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,17,11,.12) 0%,rgba(5,17,11,.02) 48%,transparent 65%),linear-gradient(0deg,rgba(5,17,11,.14),transparent 48%)}
+.hero-banner-copy{position:absolute;z-index:2;left:clamp(30px,8.5vw,136px);top:50%;transform:translateY(-50%);width:min(47%,610px);color:#fff;line-height:normal}
+.banner-eyebrow{display:flex;align-items:center;gap:10px;font:500 10px 'DM Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:#dbeee2;margin:0 0 23px}
+.banner-eyebrow span{display:inline-block;width:8px;height:8px;background:#61c68f;border-radius:50%;box-shadow:0 0 0 5px rgba(97,198,143,.14)}
+.hero-banner-copy h1{font:800 clamp(38px,5.2vw,75px)/.99 Manrope,sans-serif;letter-spacing:-.07em;margin:0;color:#fff;text-shadow:0 4px 32px rgba(0,0,0,.16)}
+.hero-banner-copy h1 em{font-style:normal;color:#8bdbab}
+.banner-skills{margin:25px 0 0;font:500 clamp(9px,1vw,12px) 'DM Mono',monospace;letter-spacing:.14em;color:rgba(255,255,255,.88);white-space:nowrap}
+.banner-skills b{font-weight:400;color:#67cb94;margin:0 5px}
+.banner-open{display:inline-flex;align-items:center;gap:9px;margin-top:25px;text-decoration:none;color:#c8e6d4;font:500 9px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase;transition:color .2s,gap .2s}
+.banner-open span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7ed9a3;box-shadow:0 0 0 4px rgba(126,217,163,.14)}
+.banner-open:hover{color:#fff;gap:14px}
+.banner-open svg{color:#7ed9a3}
+.banner-underbar{border-top:1px solid rgba(128,202,157,.2)}
+/* Project case-study diagrams now have real selection state and keyboard-operable controls. */
+.architecture-track{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.architecture-step-wrap{display:flex;flex-direction:column;align-items:center;gap:0;min-width:0}
+.architecture-node{appearance:none;text-align:left;cursor:pointer;color:var(--text);width:min(100%,440px);min-height:56px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;border:1px solid var(--line);background:var(--panel);padding:12px 15px;position:relative;overflow:hidden;border-radius:3px;transition:background .25s,border-color .25s,transform .25s,box-shadow .25s}
+.architecture-node:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:center;transition:transform .25s}
+.architecture-node:after{display:none}
+.architecture-node:hover,.architecture-node.is-active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel));box-shadow:0 6px 24px rgba(0,0,0,.10)}
+.architecture-node:hover{transform:translateY(-1px)}
+.architecture-node.is-active:before{transform:scaleY(1)}
+.diagram-node-index{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);color:var(--accent);font:10px 'DM Mono',monospace;transition:background .2s,color .2s,border-color .2s}
+.architecture-node.is-active .diagram-node-index{background:var(--accent);color:#fff;border-color:var(--accent)}
+.architecture-node strong{font:600 11px Manrope,sans-serif;line-height:1.45}
+.diagram-node-pick{font:8px 'DM Mono',monospace;letter-spacing:.08em;color:var(--muted);transition:color .2s}
+.architecture-node.is-active .diagram-node-pick{color:var(--accent)}
+.architecture-arrow{height:24px;display:grid;place-items:center;color:var(--muted);transform:rotate(90deg);position:relative}
+.architecture-arrow:after{content:"";position:absolute;width:2px;height:10px;top:18px;background:linear-gradient(var(--accent),transparent);opacity:.7;animation:diagram-flow 1.8s ease-in-out infinite}
+.architecture-arrow.is-passed{color:var(--accent)}
+.architecture-arrow.is-passed:after{opacity:1}
+.diagram-instruction{display:flex;align-items:center;gap:8px;font:9px 'DM Mono',monospace;letter-spacing:.04em;color:var(--text);margin:0 0 15px}
+.diagram-live-dot,.workflow-toolbar i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
+.diagram-muted{color:var(--muted)}
+.diagram-detail{width:min(100%,440px);margin:20px auto 0;padding:17px;border:1px solid color-mix(in srgb,var(--accent) 48%,var(--line));background:linear-gradient(115deg,color-mix(in srgb,var(--accent) 10%,var(--panel)),var(--panel));position:relative;overflow:hidden;animation:diagram-reveal .28s ease both}
+.diagram-detail-index,.workflow-detail-label{display:flex;align-items:center;gap:5px;color:var(--accent);font:9px 'DM Mono',monospace;letter-spacing:.1em}
+.diagram-detail-index span{color:var(--muted)}
+.diagram-detail-body h4,.workflow-detail h4{font:700 15px Manrope,sans-serif;letter-spacing:-.025em;margin:10px 0 7px;color:var(--text)}
+.diagram-detail-body p,.workflow-detail p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}
+.diagram-meter{height:2px;margin-top:18px;background:var(--line);overflow:hidden}
+.diagram-meter span{display:block;height:100%;background:var(--accent);transition:width .35s cubic-bezier(.2,.7,.2,1)}
+.workflow-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 15px;font:9px 'DM Mono',monospace;color:var(--muted)}
+.workflow-toolbar>span:first-child{display:flex;align-items:center;gap:9px;color:var(--text)}
+.workflow-toolbar i{width:6px;height:6px}
+.workflow-count{color:var(--accent);font-size:10px}
+.workflow-count b{color:var(--muted);font-weight:400;margin:0 3px}
+.workflow-track{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+.workflow-step{appearance:none;cursor:pointer;color:var(--text);text-align:left;min-width:0;min-height:102px;background:var(--panel);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;position:relative;overflow:hidden;transition:transform .24s,border-color .24s,background .24s,box-shadow .24s}
+.workflow-step:before{content:"";position:absolute;inset:0;background:linear-gradient(140deg,color-mix(in srgb,var(--accent) 13%,transparent),transparent 55%);opacity:0;transition:opacity .25s}
+.workflow-step>span,.workflow-step>strong,.workflow-step-indicator{position:relative;z-index:1}
+.workflow-step>span{font:9px 'DM Mono',monospace;color:var(--accent)}
+.workflow-step>strong{font:600 10px/1.5 Manrope,sans-serif;color:var(--text)}
+.workflow-step:hover,.workflow-step.is-active{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 25px rgba(0,0,0,.12)}
+.workflow-step.is-active:before{opacity:1}
+.workflow-step-indicator{width:100%;height:2px;background:var(--line);display:block}
+.workflow-step-indicator:after{content:"";display:block;width:0;height:100%;background:var(--accent);transition:width .3s}
+.workflow-step.is-active .workflow-step-indicator:after{width:100%}
+.workflow-detail{border-top:1px solid var(--line);margin-top:18px;padding-top:17px;animation:diagram-reveal .28s ease both}
+.workflow-detail-label{font-size:8px}
+.workflow-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.workflow-nav-button{appearance:none;border:1px solid var(--line);background:transparent;color:var(--text);padding:9px 12px;font:9px 'DM Mono',monospace;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+.workflow-nav-button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.workflow-nav-button:disabled{opacity:.35;cursor:not-allowed}
+.workflow-progress-dots{display:flex;align-items:center;justify-content:center;gap:5px}
+.workflow-progress-dots button{appearance:none;border:0;padding:0;width:5px;height:5px;border-radius:50%;background:var(--line-strong);cursor:pointer;transition:width .25s,background .25s,border-radius .25s}
+.workflow-progress-dots button.is-active{width:20px;border-radius:99px;background:var(--accent)}
+@keyframes diagram-flow{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(4px);opacity:1}}
+@keyframes diagram-reveal{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+  .hero-banner-copy{left:5.5vw;width:52%}
+  .hero-banner-copy h1{font-size:clamp(29px,5.7vw,48px)}
+  .banner-eyebrow{font-size:8px;letter-spacing:.15em;margin-bottom:16px}
+  .banner-skills{font-size:8px;letter-spacing:.06em;margin-top:16px}
+  .banner-skills b{margin:0 2px}
+  .banner-open{font-size:8px;letter-spacing:.1em;margin-top:16px}
+}
+@media(max-width:540px){
+  .hero-banner-image{display:flex;flex-direction:column;min-height:0;line-height:normal;background:#0b2016}
+  .hero-banner-image>img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;object-position:center}
+  .hero-banner-image:after{display:none}
+  .hero-banner-copy{position:relative;inset:auto;transform:none;width:100%;padding:26px 24px 29px;background:linear-gradient(120deg,#102a1d,#0b2016);border-top:1px solid rgba(113,197,147,.2)}
+  .hero-banner-copy h1{font-size:clamp(35px,10vw,47px);line-height:.99}
+  .banner-eyebrow{font-size:9px;margin-bottom:17px}
+  .banner-skills{font-size:9px;letter-spacing:.09em;margin-top:18px}
+  .banner-open{font-size:8px;margin-top:19px}
+  .architecture-node{grid-template-columns:29px 1fr;gap:9px;padding:11px}
+  .diagram-node-pick{grid-column:2;justify-self:start}
+  .workflow-track{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .workflow-step{min-height:88px}
+  .workflow-controls{gap:7px}
+  .workflow-nav-button{padding:8px;font-size:8px}
+  .workflow-progress-dots{gap:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  .architecture-arrow:after{animation:none}
+  .diagram-detail,.workflow-detail{animation:none}
+  .architecture-node,.workflow-step,.diagram-meter span,.workflow-progress-dots button{transition:none}
+}
