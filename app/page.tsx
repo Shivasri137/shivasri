@@ -96,38 +96,75 @@ const projects: Project[] = [
 ];
 
 function ProjectCaseStudy({ project }: { project: Project }) {
+  const [activeArchitecture, setActiveArchitecture] = useState(0);
+  const [activeWorkflow, setActiveWorkflow] = useState(0);
+
+  useEffect(() => {
+    setActiveArchitecture(0);
+    setActiveWorkflow(0);
+  }, [project.id]);
+
+  const architectureDescription = project.details[Math.min(activeArchitecture, project.details.length - 1)]
+    || 'This is a conceptual architecture stage. Add implementation-specific detail as the system evolves.';
+  const workflowDescription = project.details[Math.min(activeWorkflow, project.details.length - 1)]
+    || 'This is a conceptual workflow step. Add implementation-specific detail as the system evolves.';
+
   return (
     <div className="case-study-visuals">
-      <section className="diagram-panel">
+      <section className="diagram-panel architecture-panel">
         <div className="diagram-heading">
           <span>01 / SYSTEM MAP</span>
-          <small>HIGH-LEVEL ARCHITECTURE</small>
+          <small>SELECT A NODE TO EXPLORE</small>
         </div>
-        <div className="architecture-track">
+        <div className="diagram-instruction"><span className="diagram-live-dot" /> Interactive architecture <span className="diagram-muted">/ {project.architecture.length} stages</span></div>
+        <div className="architecture-track" role="group" aria-label={project.name + ' architecture diagram'}>
           {project.architecture.map((node, index) => (
             <div className="architecture-step-wrap" key={node}>
-              <div className="architecture-node">
-                <span>{String(index + 1).padStart(2, '0')}</span>
+              <button type="button" className={'architecture-node' + (activeArchitecture === index ? ' is-active' : '')} aria-pressed={activeArchitecture === index} onClick={() => setActiveArchitecture(index)}>
+                <span className="diagram-node-index">{String(index + 1).padStart(2, '0')}</span>
                 <strong>{node}</strong>
-              </div>
-              {index < project.architecture.length - 1 && <div className="architecture-arrow" aria-hidden="true"><ChevronRight size={15} /></div>}
+                <span className="diagram-node-pick">{activeArchitecture === index ? 'SELECTED' : 'EXPLORE'}</span>
+              </button>
+              {index < project.architecture.length - 1 && <div className={'architecture-arrow' + (activeArchitecture > index ? ' is-passed' : '')} aria-hidden="true"><ChevronRight size={16} /></div>}
             </div>
           ))}
         </div>
-        <p className="diagram-caption">Conceptual system map based on the available project description. Implementation details may differ.</p>
+        <div className="diagram-detail" aria-live="polite">
+          <div className="diagram-detail-index">STAGE {String(activeArchitecture + 1).padStart(2, '0')} <span>/ {String(project.architecture.length).padStart(2, '0')}</span></div>
+          <div className="diagram-detail-body"><h4>{project.architecture[activeArchitecture]}</h4><p>{architectureDescription}</p></div>
+          <div className="diagram-meter" aria-label={'Architecture stage ' + (activeArchitecture + 1) + ' of ' + project.architecture.length}><span style={{ width: (((activeArchitecture + 1) / project.architecture.length) * 100) + '%' }} /></div>
+        </div>
+        <p className="diagram-caption">Conceptual system map grounded in the available project description—not a claim that every stage has shipped exactly as shown.</p>
       </section>
       <section className="diagram-panel workflow-panel">
         <div className="diagram-heading">
           <span>02 / WORKFLOW</span>
-          <small>FROM INPUT TO OUTPUT</small>
+          <small>STEP THROUGH THE JOURNEY</small>
         </div>
-        <div className="workflow-track">
+        <div className="workflow-toolbar">
+          <span><i /> Workflow explorer</span>
+          <span className="workflow-count">{String(activeWorkflow + 1).padStart(2, '0')} <b>/</b> {String(project.workflow.length).padStart(2, '0')}</span>
+        </div>
+        <div className="workflow-track" role="group" aria-label={project.name + ' workflow'}>
           {project.workflow.map((step, index) => (
-            <div className="workflow-step" key={step}>
+            <button type="button" className={'workflow-step' + (activeWorkflow === index ? ' is-active' : '')} key={step} aria-pressed={activeWorkflow === index} onClick={() => setActiveWorkflow(index)}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <strong>{step}</strong>
-            </div>
+              <i className="workflow-step-indicator" />
+            </button>
           ))}
+        </div>
+        <div className="workflow-detail" aria-live="polite">
+          <span className="workflow-detail-label">CURRENT STEP · {String(activeWorkflow + 1).padStart(2, '0')}</span>
+          <h4>{project.workflow[activeWorkflow]}</h4>
+          <p>{workflowDescription}</p>
+          <div className="workflow-controls">
+            <button type="button" className="workflow-nav-button" onClick={() => setActiveWorkflow(value => Math.max(0, value - 1))} disabled={activeWorkflow === 0} aria-label="Previous workflow step">← Previous</button>
+            <div className="workflow-progress-dots" aria-label={'Step ' + (activeWorkflow + 1) + ' of ' + project.workflow.length}>
+              {project.workflow.map((step, index) => <button type="button" key={step} onClick={() => setActiveWorkflow(index)} className={activeWorkflow === index ? 'is-active' : ''} aria-label={'Go to step ' + (index + 1)} />)}
+            </div>
+            <button type="button" className="workflow-nav-button" onClick={() => setActiveWorkflow(value => Math.min(project.workflow.length - 1, value + 1))} disabled={activeWorkflow === project.workflow.length - 1} aria-label="Next workflow step">Next →</button>
+          </div>
         </div>
       </section>
     </div>
@@ -263,13 +300,19 @@ export default function Home() {
       <section className="hero-banner" id="home" aria-label="Shiva Sri portfolio introduction">
         <div className="hero-banner-image">
           <Image
-            src="/shiva-header-banner.webp"
-            alt="Professional portfolio hero image of Shiva Sri in a cream suit against a deep green modern workspace"
-            width={1024}
-            height={440}
+            src="/shiva-portfolio-banner-v2.webp"
+            alt="Shiva Sri in her cream blazer against a deep forest-green background"
+            width={1200}
+            height={465}
             priority
             sizes="100vw"
           />
+          <div className="hero-banner-copy">
+            <p className="banner-eyebrow"><span /> AI / ML ENGINEER</p>
+            <h1>Ideas into<br /><em>intelligent impact.</em></h1>
+            <p className="banner-skills">PYTHON <b>·</b> GENAI <b>·</b> RAG <b>·</b> LLMS</p>
+            <a className="banner-open" href="#work"><span /> EXPLORE THE WORK <ArrowDownRight size={15} /></a>
+          </div>
         </div>
         <div className="banner-underbar">
           <div className="banner-underbar-copy">
