@@ -173,8 +173,9 @@ function ProjectCaseStudy({ project }: { project: Project }) {
 
 const skills = [
   'Python', 'Machine Learning', 'Deep Learning', 'LLMs & RAG', 'Agentic AI',
-  'TensorFlow / Keras', 'PyTorch', 'OpenCV', 'SQL', 'Next.js', 'TypeScript',
-  'Streamlit', 'Flask', 'Git & GitHub', 'n8n', 'Ollama'
+  'TensorFlow / Keras', 'LangChain', 'Agno', 'OpenCV', 'Next.js', 'TypeScript',
+  'Streamlit', 'Ollama', 'n8n', 'Prompt Engineering', 'Workflow Automation',
+  'Git & GitHub'
 ];
 
 export default function Home() {
@@ -235,7 +236,7 @@ export default function Home() {
     setContactSending(true);
     setContactStatus('');
     const subject = encodeURIComponent('Portfolio enquiry from ' + contactForm.name);
-    const body = encodeURIComponent(contactForm.message + '\\n\\nFrom: ' + contactForm.name + ' <' + contactForm.email + '>');
+    const body = encodeURIComponent(contactForm.message + '\n\nFrom: ' + contactForm.name + ' <' + contactForm.email + '>');
     const mailto = 'mailto:hello.shivasri@gmail.com?subject=' + subject + '&body=' + body;
     try {
       const response = await fetch('/api/contact', {
@@ -379,7 +380,7 @@ export default function Home() {
                   {project.id === 'trace' ? <Command size={52} strokeWidth={1} /> : project.id === 'flowbridge' ? <BrainCircuit size={58} strokeWidth={1} /> : project.id === 'bodha' ? <Sparkles size={54} strokeWidth={1} /> : project.id === 'jacket' ? <Zap size={54} strokeWidth={1} /> : project.id === 'groomgraud' ? <ScanFace size={54} strokeWidth={1} /> : <span className="grammar-symbol">Aa</span>}
                 </div>
                 <div className="mini-architecture" aria-hidden="true"><i /><b /><i /><b /><i /></div>
-                <span className="project-number">{project.number} / 05</span><span className="project-status">{project.status}</span><span className="project-open"><ArrowUpRight size={19} /></span>
+                <span className="project-number">{project.number} / 06</span><span className="project-status">{project.status}</span><span className="project-open"><ArrowUpRight size={19} /></span>
               </div>
               <div className="project-info">
                 <span className="project-label">{project.label}</span><h3>{project.name}</h3><p>{project.description}</p>
@@ -411,7 +412,7 @@ export default function Home() {
             <p>My projects span evidence-based claim verification, learning support, computer vision, and AI + IoT. I care about describing what a system actually does, showing its architecture, and being clear about limitations as well as strengths.</p>
             <div className="facts-grid">
               <div><span>EDUCATION</span><strong>B.Tech · AI & ML</strong><small>Nalla Malla Reddy Engineering College</small></div>
-              <div><span>ACADEMICS</span><strong>9.05 / 10.0 GPA</strong><small>Graduation period listed: 2022–2026</small></div>
+              <div><span>ACADEMICS</span><strong>9.5 / 10.0 GPA</strong><small>Graduation period listed: 2022–2026</small></div>
               <div><span>INTELLECTUAL PROPERTY</span><strong>Published patent</strong><small>202541020161 A</small></div>
               <div><span>FOCUS AREAS</span><strong>LLMs · RAG · AI agents</strong><small>Computer vision · product engineering</small></div>
             </div>
