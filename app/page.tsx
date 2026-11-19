@@ -171,17 +171,26 @@ function ProjectCaseStudy({ project }: { project: Project }) {
   );
 }
 
-const skills = [
-  'Python', 'Machine Learning', 'Deep Learning', 'LLMs & RAG', 'Agentic AI',
-  'TensorFlow / Keras', 'LangChain', 'Agno', 'OpenCV', 'Next.js', 'TypeScript',
-  'Streamlit', 'Ollama', 'n8n', 'Prompt Engineering', 'Workflow Automation',
-  'Git & GitHub'
+const skillGroups = [
+  {
+    title: 'Programming & product development',
+    items: ['Python', 'TypeScript', 'Next.js', 'Streamlit', 'Git & GitHub']
+  },
+  {
+    title: 'Machine learning',
+    items: ['Machine Learning', 'Deep Learning', 'TensorFlow / Keras', 'OpenCV']
+  },
+  {
+    title: 'Generative AI & automation',
+    items: ['LLMs & RAG', 'LangChain', 'Agno', 'Ollama', 'n8n', 'Prompt Engineering', 'Workflow Automation']
+  }
 ];
 
 export default function Home() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [filter, setFilter] = useState('All');
-  const [search, setSearch] = useState('');
+  const [projectSearch, setProjectSearch] = useState('');
+  const [commandSearch, setCommandSearch] = useState('');
   const [selected, setSelected] = useState<Project | null>(null);
   const [commandOpen, setCommandOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -222,8 +231,8 @@ export default function Home() {
   const visibleProjects = useMemo(() => projects.filter(project => {
     const matchesFilter = filter === 'All' || project.category === filter;
     const haystack = [project.name, project.label, project.description, ...project.stack].join(' ').toLowerCase();
-    return matchesFilter && haystack.includes(search.toLowerCase());
-  }), [filter, search]);
+    return matchesFilter && haystack.includes(projectSearch.toLowerCase());
+  }), [filter, projectSearch]);
 
   const goTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -265,7 +274,8 @@ export default function Home() {
   const commands = [
     { label: 'Home', hint: 'Back to the introduction', id: 'home' },
     { label: 'Selected work', hint: 'Projects and case studies', id: 'work' },
-    { label: 'About', hint: 'Background and approach', id: 'about' },
+    { label: 'Experience', hint: 'Internships and education', id: 'experience' },
+    { label: 'About', hint: 'Background and approach', id: 'about' }
     { label: 'Toolkit', hint: 'Skills and technologies', id: 'toolkit' },
     { label: 'Contact', hint: 'Start a conversation', id: 'contact' }
   ];
@@ -280,9 +290,10 @@ export default function Home() {
         </a>
         <nav className={mobileOpen ? 'main-nav nav-open' : 'main-nav'} aria-label="Main navigation">
           <a href="#work" onClick={() => setMobileOpen(false)}>Work <span>01</span></a>
-          <a href="#about" onClick={() => setMobileOpen(false)}>About <span>02</span></a>
-          <a href="#toolkit" onClick={() => setMobileOpen(false)}>Toolkit <span>03</span></a>
-          <a href="#contact" onClick={() => setMobileOpen(false)}>Contact <span>04</span></a>
+          <a href="#experience" onClick={() => setMobileOpen(false)}>Experience <span>02</span></a>
+          <a href="#about" onClick={() => setMobileOpen(false)}>About <span>03</span></a>
+          <a href="#toolkit" onClick={() => setMobileOpen(false)}>Toolkit <span>04</span></a>
+          <a href="#contact" onClick={() => setMobileOpen(false)}>Contact <span>06</span></a>
           <button className="mobile-theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />} Switch theme
           </button>
@@ -309,20 +320,20 @@ export default function Home() {
             sizes="100vw"
           />
           <div className="hero-banner-copy">
-            <p className="banner-eyebrow"><span /> AI / ML ENGINEER</p>
-            <h1>Ideas into<br /><em>intelligent impact.</em></h1>
-            <p className="banner-skills">PYTHON <b>·</b> GENAI <b>·</b> RAG <b>·</b> LLMS</p>
+            <p className="banner-eyebrow"><span /> OPEN TO AI/ML ENGINEERING ROLES</p>
+            <h1>Building useful<br /><em>AI systems.</em></h1>
+            <p className="banner-skills">PYTHON <b>·</b> GENAI <b>·</b> RAG <b>·</b> AI AGENTS</p>
             <a className="banner-open" href="#work"><span /> EXPLORE THE WORK <ArrowDownRight size={15} /></a>
           </div>
         </div>
         <div className="banner-underbar">
           <div className="banner-underbar-copy">
-            <p className="mini-overline">SHIVA SRI · AI / ML ENGINEER</p>
-            <p>Building intelligent systems and thoughtful digital experiences.</p>
+            <p className="mini-overline">SHIVA SRI JONNALA · AI / ML</p>
+            <p>B.Tech AI & ML graduate building Python, LLM and RAG-powered applications. Based in Hyderabad, India.</p>
           </div>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#work">Explore my work <ArrowDownRight size={17} /></a>
-            <a className="btn btn-ghost" href="#contact">Let’s connect <ArrowUpRight size={16} /></a>
+            <a className="btn btn-primary" href="#work">View selected projects <ArrowDownRight size={17} /></a>
+            <a className="btn btn-ghost" href="https://www.linkedin.com/in/shivasrijonnala/" target="_blank" rel="noreferrer">LinkedIn <Linkedin size={16} /><ArrowUpRight size={14} /></a>
           </div>
         </div>
       </section>
@@ -348,7 +359,7 @@ export default function Home() {
               <button key={item} className={filter === item ? 'filter-tab active' : 'filter-tab'} onClick={() => setFilter(item)}>{item}</button>
             ))}
           </div>
-          <label className="project-search"><Search size={15} /><input value={search} onChange={event => setSearch(event.target.value)} placeholder="Find a project…" aria-label="Search projects" />{search && <button onClick={() => setSearch('')} aria-label="Clear search"><X size={14} /></button>}</label>
+          <label className="project-search"><Search size={15} /><input value={projectSearch} onChange={event => setProjectSearch(event.target.value)} placeholder="Find a project…" aria-label="Search projects" />{projectSearch && <button onClick={() => setProjectSearch('')} aria-label="Clear search"><X size={14} /></button>}</label>
         </div>
         <div className="project-grid">
           {visibleProjects.map(project => (
@@ -394,9 +405,49 @@ export default function Home() {
         <p className="work-note"><span><i /> PROJECTS, NOT PROMISES</span><span>Details and statuses reflect the current known scope.</span></p>
       </section>
 
+      <section id="experience" className="experience-section section-pad">
+        <div className="section-heading reveal">
+          <div>
+            <p className="section-overline"><span>02 / EXPERIENCE</span><span>INDUSTRY & LEARNING</span></p>
+            <h2>Experience that<br /><em>shapes how I build.</em></h2>
+          </div>
+          <p>Early-career experience across web development, digital product work and AI-focused projects, supported by a strong academic foundation.</p>
+        </div>
+        <div className="experience-grid">
+          <div className="experience-list">
+            <article className="experience-card reveal">
+              <div className="experience-card-top"><span className="experience-kind">PROJECT EXPERIENCE</span><span className="experience-date">DIGITAL CONNECT</span></div>
+              <h3>Digital Design & Web Projects</h3>
+              <p className="experience-role">Digital Connect</p>
+              <p>Contributed to website and UI work, digital design, SEO support and practical workflow automation tasks.</p>
+              <div className="tag-list"><span>Web & UI</span><span>Digital design</span><span>SEO</span><span>Automation</span></div>
+            </article>
+            <article className="experience-card reveal">
+              <div className="experience-card-top"><span className="experience-kind">VIRTUAL INTERNSHIP</span><span className="experience-date">AUG – OCT 2025</span></div>
+              <h3>Front-End Web Development Intern</h3>
+              <p className="experience-role">Edunet Foundation · AICTE · IBM SkillsBuild</p>
+              <p>Completed a structured virtual internship focused on front-end web development and practical web application fundamentals.</p>
+              <div className="tag-list"><span>Front-end development</span><span>IBM SkillsBuild</span><span>AICTE</span></div>
+            </article>
+          </div>
+          <aside className="education-card reveal">
+            <p className="mini-overline">EDUCATION</p>
+            <span className="education-period">2022 — 2026</span>
+            <h3>B.Tech · Computer Science & Engineering</h3>
+            <p className="education-specialisation">Artificial Intelligence & Machine Learning</p>
+            <p className="education-institution">Nalla Malla Reddy Engineering College</p>
+            <div className="education-score"><strong>9.5</strong><span>/ 10.0<br />CGPA</span></div>
+            <div className="education-divider" />
+            <p className="mini-overline">PUBLISHED PATENT</p>
+            <h4>AI-Enabled Smart Jacket</h4>
+            <p className="education-institution">Patent publication 202541020161 A · 2025</p>
+          </aside>
+        </div>
+      </section>
+
       <section id="about" className="about-section section-pad">
         <div className="section-heading reveal">
-          <div><p className="section-overline"><span>02 / ABOUT</span><span>BEYOND THE CODE</span></p><h2>Engineer by practice.<br /><em>Builder by instinct.</em></h2></div>
+          <div><p className="section-overline"><span>03 / ABOUT</span><span>BEYOND THE CODE</span></p><h2>Engineer by practice.<br /><em>Builder by instinct.</em></h2></div>
           <p>I like moving from an unclear problem to a working prototype — then asking harder questions about reliability, usability, and what to improve next.</p>
         </div>
         <div className="about-grid">
@@ -435,17 +486,24 @@ export default function Home() {
 
       <section id="toolkit" className="toolkit-section section-pad">
         <div className="section-heading reveal">
-          <div><p className="section-overline"><span>03 / TOOLKIT</span><span>TOOLS I WORK WITH</span></p><h2>Technical by choice.<br /><em>Curious by nature.</em></h2></div>
+          <div><p className="section-overline"><span>04 / TOOLKIT</span><span>TOOLS I WORK WITH</span></p><h2>Technical by choice.<br /><em>Curious by nature.</em></h2></div>
           <p>A practical toolkit across machine learning, language models, and product engineering. Familiarity varies by tool and project.</p>
         </div>
         <div className="toolkit-layout">
           <div className="toolkit-card reveal"><div className="toolkit-icon"><BrainCircuit size={25} /></div><span className="mini-overline">THE MINDSET</span><h3>The stack is a tool.<br />The problem is the point.</h3><p>I choose technologies based on the job to be done, not the trend of the week.</p><div className="toolkit-footer"><span>AI / ML</span><span>PRODUCT</span><span>ENGINEERING</span></div></div>
-          <div className="skills-cloud reveal">{skills.map((skill, index) => <span key={skill} className={'skill-chip chip-' + (index % 4)}><i />{skill}</span>)}</div>
+          <div className="skills-groups reveal">
+            {skillGroups.map(group => (
+              <div className="skill-group" key={group.title}>
+                <h3>{group.title}</h3>
+                <div className="skills-cloud">{group.items.map(skill => <span key={skill} className="skill-chip"><i />{skill}</span>)}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="process-section section-pad">
-        <p className="section-overline reveal"><span>04 / PROCESS</span><span>HOW IDEAS BECOME PRODUCTS</span></p>
+        <p className="section-overline reveal"><span>05 / PROCESS</span><span>HOW IDEAS BECOME PRODUCTS</span></p>
         <div className="process-grid">
           {[['01', 'Understand', 'Define the user, the problem, and what a useful result looks like.'], ['02', 'Prototype', 'Build the smallest complete version that can be tested.'], ['03', 'Evaluate', 'Check real behaviour, edge cases, and failure modes.'], ['04', 'Refine', 'Improve the experience and document what changed.']].map(step => (
             <article className="process-step reveal" key={step[0]}><span>{step[0]}</span><div className="process-rule"><i /></div><h3>{step[1]}</h3><p>{step[2]}</p></article>
@@ -455,9 +513,9 @@ export default function Home() {
 
       <section id="contact" className="contact-section section-pad">
         <div className="contact-glow glow-one" /><div className="contact-glow glow-two" />
-        <p className="section-overline reveal"><span>05 / CONTACT</span><span>GOOD THINGS START WITH A CONVERSATION</span></p>
+        <p className="section-overline reveal"><span>06 / CONTACT</span><span>GOOD THINGS START WITH A CONVERSATION</span></p>
         <div className="contact-layout">
-          <div className="contact-main reveal"><p className="mini-overline">HAVE A PROBLEM WORTH SOLVING?</p><h2>Let’s make<br /><em>something matter.</em></h2><p className="contact-description">Open to AI/ML engineering opportunities, collaborations, and thoughtful conversations about products built with AI.</p>
+          <div className="contact-main reveal"><p className="mini-overline">HAVE A PROBLEM WORTH SOLVING?</p><h2>Let’s make<br /><em>something matter.</em></h2><p className="contact-description">Open to entry-level AI/ML Engineer, Generative AI Engineer and Python Developer opportunities. I’m also interested in teams building practical LLM-powered products.</p>
             <div className="contact-actions"><a className="btn btn-primary" href="mailto:hello.shivasri@gmail.com?subject=Let%E2%80%99s%20connect">Email me <Mail size={16} /></a><a className="btn btn-ghost" href="https://github.com/Shivasri137" target="_blank" rel="noreferrer">GitHub <Github size={16} /><ArrowUpRight size={14} /></a><a className="btn btn-ghost" href="https://www.linkedin.com/in/shivasrijonnala/" target="_blank" rel="noreferrer">LinkedIn <Linkedin size={16} /><ArrowUpRight size={14} /></a></div>
             <p className="contact-location">India · Open to relevant opportunities and collaborations</p>
           </div>
@@ -476,9 +534,8 @@ export default function Home() {
 
       {scrolled && <button className="back-to-top" onClick={() => goTo('home')} aria-label="Back to top"><ArrowUpRight size={18} /></button>}
 
-      {commandOpen && <div className="modal-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) setCommandOpen(false); }}><div className="command-modal" role="dialog" aria-modal="true" aria-label="Quick navigation"><div className="command-input"><Search size={17} /><input autoFocus value={search} onChange={event => setSearch(event.target.value)} placeholder="Search sections and projects…" /><kbd>ESC</kbd><button onClick={() => setCommandOpen(false)} aria-label="Close quick navigation"><X size={16} /></button></div><p className="modal-label">JUMP TO</p>{commands.filter(item => (item.label + item.hint).toLowerCase().includes(search.toLowerCase())).map(item => <button className="command-row" key={item.id} onClick={() => goTo(item.id)}><span><b>{item.label}</b><small>{item.hint}</small></span><ChevronRight size={16} /></button>)}<div className="command-help">TIP: PRESS CTRL + K ANYTIME</div></div></div>}
+      {commandOpen && <div className="modal-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) setCommandOpen(false); }}><div className="command-modal" role="dialog" aria-modal="true" aria-label="Quick navigation"><div className="command-input"><Search size={17} /><input autoFocus value={commandSearch} onChange={event => setCommandSearch(event.target.value)} placeholder="Search sections and projects…" /><kbd>ESC</kbd><button onClick={() => setCommandOpen(false)} aria-label="Close quick navigation"><X size={16} /></button></div><p className="modal-label">JUMP TO</p>{commands.filter(item => (item.label + item.hint).toLowerCase().includes(commandSearch.toLowerCase())).map(item => <button className="command-row" key={item.id} onClick={() => goTo(item.id)}><span><b>{item.label}</b><small>{item.hint}</small></span><ChevronRight size={16} /></button>)}<div className="command-help">TIP: PRESS CTRL + K ANYTIME</div></div></div>}
 
       {selected && <div className="modal-backdrop project-backdrop" onMouseDown={event => { if (event.target === event.currentTarget) setSelected(null); }}><article className="detail-modal" role="dialog" aria-modal="true" aria-labelledby="project-title"><button className="modal-close" onClick={() => setSelected(null)} aria-label="Close project details"><X size={19} /></button><div className={'detail-art detail-' + selected.id}><div className="art-grid" /><div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" /><div className="detail-symbol">{selected.id === 'trace' ? <Command size={58} strokeWidth={1} /> : selected.id === 'flowbridge' ? <BrainCircuit size={62} strokeWidth={1} /> : selected.id === 'bodha' ? <Sparkles size={58} strokeWidth={1} /> : selected.id === 'jacket' ? <Zap size={58} strokeWidth={1} /> : selected.id === 'groomgraud' ? <ScanFace size={58} strokeWidth={1} /> : <span className="grammar-symbol">Aa</span>}</div><span>{selected.status}</span></div><div className="detail-content"><p className="mini-overline">{selected.label} / PROJECT {selected.number}</p><h2 id="project-title">{selected.name}</h2><p className="detail-description">{selected.description}</p><h3>Intent & approach</h3><ul>{selected.details.map(detail => <li key={detail}>{detail}</li>)}</ul><ProjectCaseStudy project={selected} /><h3>Technology</h3><div className="tag-list detail-tags">{selected.stack.map(tag => <span key={tag}>{tag}</span>)}</div><div className="detail-actions">{selected.link && <a className="btn btn-primary" href={selected.link} target="_blank" rel="noreferrer">View GitHub repository <ExternalLink size={15} /></a>}<button className="btn btn-ghost" onClick={() => { setSelected(null); goTo('contact'); }}>Discuss this project <ArrowDownRight size={15} /></button></div><p className="detail-disclaimer">Diagrams are high-level summaries, not guarantees of every implementation detail. Add verified demos, screenshots, and evaluation results as they become available.</p></div></article></div>}
     </main>
   );
-}

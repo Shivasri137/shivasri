@@ -1,6 +1,6 @@
 # Shiva Sri — AI/ML Engineer & Builder
 
-A responsive Next.js portfolio featuring Shiva Sri's supplied portrait, an adaptive dark/light theme, project search and category filters, project detail modals, command navigation, responsive layouts, and reduced-motion support.
+A responsive Next.js portfolio featuring Shiva Sri's supplied portrait, an adaptive dark/light theme, project search and category filters, project detail modals, command navigation, responsive layouts, a recruiter-focused experience and education section, grouped technical skills, and reduced-motion support.
 
 ## Run locally
 
@@ -36,11 +36,12 @@ Import this repository in Vercel. Use the Next.js framework preset and deploy. N
 - Press Ctrl+K / Cmd+K for quick navigation.
 - Filter and search project cards.
 - Select a project to open its detail modal.
+- Review selected experience, education, and grouped technical skills.
 - Responsive mobile navigation and reduced-motion support.
 
 ## Before publishing
 
-Review current project statuses and links. Add verified demos, screenshots, technical writeups, and reproducible evaluation evidence when available. The resume PDF is intentionally not included in this public repository.
+Review current project statuses and links. Add verified demos, screenshots, technical writeups, and reproducible evaluation evidence when available. A résumé PDF is not linked until a current, approved copy is added.
 
 ## Stack
 
